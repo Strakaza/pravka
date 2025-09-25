@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pravka - Correcteur Orthographique IA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo">
+                    <h1>Pravka</h1>
+                </div>
+                <div class="language-selector">
+                    <button id="language-btn" class="language-btn">
+                        <img src="https://flagcdn.com/w20/fr.png" class="flag-icon" alt="French">
+                        <span>Français</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9L12 15L18 9" stroke="#4C4A48" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div id="language-dropdown" class="language-dropdown hidden">
+                        <button data-lang="zh" class="language-option">
+                            <img src="https://flagcdn.com/w20/cn.png" class="flag-icon" alt="Chinese"> 中文
+                        </button>
+                        <button data-lang="es" class="language-option">
+                            <img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="Spanish"> Español
+                        </button>
+                        <button data-lang="en" class="language-option">
+                            <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English"> English
+                        </button>
+                        <button data-lang="hi" class="language-option">
+                            <img src="https://flagcdn.com/w20/in.png" class="flag-icon" alt="Hindi"> हिन्दी
+                        </button>
+                        <button data-lang="ar" class="language-option">
+                            <img src="https://flagcdn.com/w20/sa.png" class="flag-icon" alt="Arabic"> العربية
+                        </button>
+                        <button data-lang="pt" class="language-option">
+                            <img src="https://flagcdn.com/w20/pt.png" class="flag-icon" alt="Portuguese"> Português
+                        </button>
+                        <button data-lang="bn" class="language-option">
+                            <img src="https://flagcdn.com/w20/bd.png" class="flag-icon" alt="Bengali"> বাংলা
+                        </button>
+                        <button data-lang="ru" class="language-option">
+                            <img src="https://flagcdn.com/w20/ru.png" class="flag-icon" alt="Russian"> Русский
+                        </button>
+                        <button data-lang="ja" class="language-option">
+                            <img src="https://flagcdn.com/w20/jp.png" class="flag-icon" alt="Japanese"> 日本語
+                        </button>
+                        <button data-lang="pa" class="language-option">
+                            <img src="https://flagcdn.com/w20/in.png" class="flag-icon" alt="Punjabi"> ਪੰਜਾਬੀ
+                        </button>
+                        <button data-lang="fr" class="language-option">
+                            <img src="https://flagcdn.com/w20/fr.png" class="flag-icon" alt="French"> Français
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <p>Correction instantanée par intelligence artificielle</p>
+        </div>
+
+        <div class="corrector-box">
+            <div class="input-section">
+                <label for="userInput">Votre texte</label>
+                <textarea id="userInput" placeholder="Commencez à taper votre texte ici..."></textarea>
+            </div>
+            
+        <div class="output-section">
+    <div class="output-header">
+        <label>Texte corrigé</label>
+        <button id="copy-btn" title="Copier le texte">
+            <i class="fas fa-copy"></i>
+        </button>
+    </div>
+    <div id="correctedOutput" class="output-area"></div>
+</div>
+            
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+                <span>Pravka corrige...</span>
+            </div>
+        </div>
+        
+        <footer class="app-footer">
+            <p class="footer-text">"Страказа живая"</p>
+            <div class="footer-content">
+                <i class="fas fa-dragonfly dragonfly-icon"></i>
+                <div class="signature-bar"></div>
+            </div>
+            <p class="api-credit">Utilise l'API Gemini</p>
+        </footer>
+    </div>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
