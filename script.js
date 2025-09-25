@@ -12,7 +12,7 @@ const copyBtn = document.getElementById('copy-btn');
 const translations = {
     fr: {
         title: "Pravka - Correcteur Orthographique IA",
-        subtitle: "Correction instantanée par intelligence artificielle",
+        subtitle: "Utilise l'API de Gemini",
         inputLabel: "Votre texte",
         inputPlaceholder: "Commencez à taper votre texte ici...",
         outputLabel: "Texte corrigé",
@@ -23,7 +23,7 @@ const translations = {
     },
     en: {
         title: "Pravka - AI Spelling Corrector",
-        subtitle: "Instant correction powered by artificial intelligence",
+        subtitle: "Instant correction powered by Gemini",
         inputLabel: "Your text",
         inputPlaceholder: "Start typing your text here...",
         outputLabel: "Corrected text",
@@ -34,7 +34,7 @@ const translations = {
     },
     es: {
         title: "Pravka - Corrector Ortográfico IA",
-        subtitle: "Corrección instantánea por inteligencia artificial",
+        subtitle: "Corrección instantánea por Gemini",
         inputLabel: "Su texto",
         inputPlaceholder: "Comience a escribir su texto aquí...",
         outputLabel: "Texto corregido",
@@ -78,7 +78,7 @@ const translations = {
     },
     pt: {
         title: "Pravka - Corretor Ortográfico IA",
-        subtitle: "Correção instantânea por inteligência artificial",
+        subtitle: "Correção instantânea por Gemini",
         inputLabel: "Seu texto",
         inputPlaceholder: "Comece a digitar seu texto aqui...",
         outputLabel: "Texto corrigido",
