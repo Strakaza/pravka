@@ -270,7 +270,7 @@ textarea:focus {
     color: var(--text-primary);
     font-weight: 400;
     margin-bottom: 15px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
 }
