@@ -11,7 +11,7 @@ const copyBtn = document.getElementById('copy-btn');
 const translations = {
     fr: {
         title: "Pravka - Correcteur Orthographique IA",
-        subtitle: "Propulsé par NVIDIA Nemotron",
+        subtitle: "Propulsé par StepFun",
         inputLabel: "Votre texte",
         inputPlaceholder: "Commencez à taper votre texte ici...",
         outputLabel: "Texte corrigé",
@@ -22,7 +22,7 @@ const translations = {
     },
     en: {
         title: "Pravka - AI Spelling Corrector",
-        subtitle: "Powered by NVIDIA Nemotron",
+        subtitle: "Powered by StepFun",
         inputLabel: "Your text",
         inputPlaceholder: "Start typing your text here...",
         outputLabel: "Corrected text",
@@ -33,7 +33,7 @@ const translations = {
     },
     es: {
         title: "Pravka - Corrector Ortográfico IA",
-        subtitle: "Corrección instantánea por NVIDIA Nemotron",
+        subtitle: "Corrección instantánea por StepFun",
         inputLabel: "Su texto",
         inputPlaceholder: "Comience a escribir su texto aquí...",
         outputLabel: "Texto corregido",
@@ -44,7 +44,7 @@ const translations = {
     },
     zh: {
         title: "Pravka - AI拼写检查器",
-        subtitle: "由 NVIDIA Nemotron 提供支持",
+        subtitle: "由 StepFun 提供支持",
         inputLabel: "您的文本",
         inputPlaceholder: "开始在这里输入您的文本...",
         outputLabel: "校正后的文本",
@@ -55,7 +55,7 @@ const translations = {
     },
     hi: {
         title: "Pravka - AI वर्तनी संशोधक",
-        subtitle: "NVIDIA Nemotron द्वारा संचालित",
+        subtitle: "StepFun द्वारा संचालित",
         inputLabel: "आपका पाठ",
         inputPlaceholder: "अपना पाठ यहाँ टाइप करना शुरू करें...",
         outputLabel: "सही किया गया पाठ",
@@ -66,7 +66,7 @@ const translations = {
     },
     ar: {
         title: "Pravka - مصحح الإملاء بالذكاء الاصطناعي",
-        subtitle: "مدعوم من NVIDIA Nemotron",
+        subtitle: "مدعوم من StepFun",
         inputLabel: "نصك",
         inputPlaceholder: "ابدأ بكتابة نصك هنا...",
         outputLabel: "النص المصحح",
@@ -77,7 +77,7 @@ const translations = {
     },
     pt: {
         title: "Pravka - Corretor Ortográfico IA",
-        subtitle: "Correção instantânea por NVIDIA Nemotron",
+        subtitle: "Correção instantânea por StepFun",
         inputLabel: "Seu texto",
         inputPlaceholder: "Comece a digitar seu texto aqui...",
         outputLabel: "Texto corrigido",
