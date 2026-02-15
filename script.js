@@ -1,5 +1,4 @@
 
-const MODEL_NAME = "gemini-2.5-flash-lite"; 
 const API_URL = `/.netlify/functions/correct`;
 
 const userInput = document.getElementById('userInput');
@@ -7,12 +6,12 @@ const correctedOutput = document.getElementById('correctedOutput');
 const loader = document.getElementById('loader');
 const languageBtn = document.getElementById('language-btn');
 const languageDropdown = document.getElementById('language-dropdown');
-const copyBtn = document.getElementById('copy-btn'); 
+const copyBtn = document.getElementById('copy-btn');
 
 const translations = {
     fr: {
         title: "Pravka - Correcteur Orthographique IA",
-        subtitle: "Utilise l'API de Gemini",
+        subtitle: "Propulsé par NVIDIA Nemotron",
         inputLabel: "Votre texte",
         inputPlaceholder: "Commencez à taper votre texte ici...",
         outputLabel: "Texte corrigé",
@@ -23,7 +22,7 @@ const translations = {
     },
     en: {
         title: "Pravka - AI Spelling Corrector",
-        subtitle: "Instant correction powered by Gemini",
+        subtitle: "Powered by NVIDIA Nemotron",
         inputLabel: "Your text",
         inputPlaceholder: "Start typing your text here...",
         outputLabel: "Corrected text",
@@ -34,7 +33,7 @@ const translations = {
     },
     es: {
         title: "Pravka - Corrector Ortográfico IA",
-        subtitle: "Corrección instantánea por Gemini",
+        subtitle: "Corrección instantánea por NVIDIA Nemotron",
         inputLabel: "Su texto",
         inputPlaceholder: "Comience a escribir su texto aquí...",
         outputLabel: "Texto corregido",
@@ -45,7 +44,7 @@ const translations = {
     },
     zh: {
         title: "Pravka - AI拼写检查器",
-        subtitle: "人工智能即时校正",
+        subtitle: "由 NVIDIA Nemotron 提供支持",
         inputLabel: "您的文本",
         inputPlaceholder: "开始在这里输入您的文本...",
         outputLabel: "校正后的文本",
@@ -56,7 +55,7 @@ const translations = {
     },
     hi: {
         title: "Pravka - AI वर्तनी संशोधक",
-        subtitle: "कृत्रिम बुद्धिमत्ता द्वारा तत्काल सुधार",
+        subtitle: "NVIDIA Nemotron द्वारा संचालित",
         inputLabel: "आपका पाठ",
         inputPlaceholder: "अपना पाठ यहाँ टाइप करना शुरू करें...",
         outputLabel: "सही किया गया पाठ",
@@ -67,7 +66,7 @@ const translations = {
     },
     ar: {
         title: "Pravka - مصحح الإملاء بالذكاء الاصطناعي",
-        subtitle: "تصحيح فوري بواسطة الذكاء الاصطناعي",
+        subtitle: "مدعوم من NVIDIA Nemotron",
         inputLabel: "نصك",
         inputPlaceholder: "ابدأ بكتابة نصك هنا...",
         outputLabel: "النص المصحح",
@@ -78,7 +77,7 @@ const translations = {
     },
     pt: {
         title: "Pravka - Corretor Ortográfico IA",
-        subtitle: "Correção instantânea por Gemini",
+        subtitle: "Correção instantânea por NVIDIA Nemotron",
         inputLabel: "Seu texto",
         inputPlaceholder: "Comece a digitar seu texto aqui...",
         outputLabel: "Texto corrigido",
@@ -141,7 +140,7 @@ let currentLanguage = 'fr';
 function updateLanguage(lang) {
     currentLanguage = lang;
     const texts = translations[lang];
-    
+
     document.title = texts.title;
     document.querySelector('.header p').textContent = texts.subtitle;
     document.querySelector('.input-section label').textContent = texts.inputLabel;
@@ -149,8 +148,8 @@ function updateLanguage(lang) {
     document.querySelector('.output-section label').textContent = texts.outputLabel;
     document.querySelector('.loader span').textContent = texts.loadingText;
     document.querySelector('.footer-text').textContent = texts.footerText;
-    copyBtn.title = texts.copyTooltip; 
-    
+    copyBtn.title = texts.copyTooltip;
+
     const selectedLang = languageDropdown.querySelector(`button[data-lang="${lang}"]`);
     if (selectedLang) {
         const flagImg = selectedLang.querySelector('.flag-icon').src;
@@ -163,7 +162,7 @@ function updateLanguage(lang) {
             </svg>
         `;
     }
-    
+
     languageDropdown.classList.add('hidden');
 }
 
@@ -199,11 +198,11 @@ function highlightDifferences(originalText, correctedText) {
         } else if (j > 0 && (i === 0 || dp[i][j] === dp[i][j - 1])) {
             j--;
         } else {
-             if (i > 0) {
+            if (i > 0) {
                 result.unshift(`<span class="highlight">${correctedWords[i - 1]}</span>`);
-             }
-             i--;
-             j--;
+            }
+            i--;
+            j--;
         }
     }
     return result.join('');
@@ -235,9 +234,9 @@ async function getCorrectionFromAPI(text) {
         }
 
         const data = await response.json();
-        const correctedText = data.correctedText; 
+        const correctedText = data.correctedText;
         const originalText = userInput.value;
-        
+
         correctedOutput.innerHTML = highlightDifferences(originalText, correctedText);
 
     } catch (error) {
@@ -264,7 +263,7 @@ async function getCorrectionFromAPI(text) {
 
 userInput.addEventListener('input', () => {
     clearTimeout(debounceTimer);
-    
+
     debounceTimer = setTimeout(() => {
         const textToCorrect = userInput.value;
         getCorrectionFromAPI(textToCorrect);
@@ -282,14 +281,14 @@ copyBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(textToCopy).then(() => {
             const originalIcon = '<i class="fas fa-copy"></i>';
             const texts = translations[currentLanguage];
-            
+
             copyBtn.innerHTML = '<i class="fas fa-check"></i>';
             copyBtn.title = texts.copiedTooltip;
 
             setTimeout(() => {
                 copyBtn.innerHTML = originalIcon;
                 copyBtn.title = texts.copyTooltip;
-            }, 2000); 
+            }, 2000);
         }).catch(err => {
             console.error('Erreur lors de la copie :', err);
         });
