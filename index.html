@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -19,7 +21,7 @@
                         <img src="https://flagcdn.com/w20/fr.png" class="flag-icon" alt="French">
                         <span>Français</span>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 9L12 15L18 9" stroke="#4C4A48" stroke-width="2"/>
+                            <path d="M6 9L12 15L18 9" stroke="#4C4A48" stroke-width="2" />
                         </svg>
                     </button>
                     <div id="language-dropdown" class="language-dropdown hidden">
@@ -59,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <p>Propulsé par NVIDIA Nemotron</p>
+            <p>Propulsé par StepFun</p>
         </div>
 
         <div class="corrector-box">
@@ -67,23 +69,23 @@
                 <label for="userInput">Votre texte</label>
                 <textarea id="userInput" placeholder="Commencez à taper votre texte ici..."></textarea>
             </div>
-            
-        <div class="output-section">
-    <div class="output-header">
-        <label>Texte corrigé</label>
-        <button id="copy-btn" title="Copier le texte">
-            <i class="fas fa-copy"></i>
-        </button>
-    </div>
-    <div id="correctedOutput" class="output-area"></div>
-</div>
-            
+
+            <div class="output-section">
+                <div class="output-header">
+                    <label>Texte corrigé</label>
+                    <button id="copy-btn" title="Copier le texte">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <div id="correctedOutput" class="output-area"></div>
+            </div>
+
             <div id="loader" class="loader hidden">
                 <div class="spinner"></div>
                 <span>Pravka corrige...</span>
             </div>
         </div>
-        
+
         <footer class="app-footer">
             <p class="footer-text">"Страказа живая"</p>
             <div class="footer-content">
@@ -95,4 +97,5 @@
     <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
