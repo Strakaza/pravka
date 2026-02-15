@@ -21,7 +21,7 @@ exports.handler = async function (event, context) {
     try {
         const { text, lang } = JSON.parse(event.body);
         const API_KEY = process.env.OPENROUTER_API_KEY;
-        const MODEL_NAME = "nvidia/nemotron-3-nano-30b-a3b:free";
+        const MODEL_NAME = "stepfun/step-3.5-flash:free";
         const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
         if (!text || !lang || !prompts[lang]) {
