@@ -1,11 +1,7 @@
-// Fichier : netlify/functions/correct.js
-
-// Les prompts qu'on avait dans le script.js, maintenant sur le serveur
 const prompts = {
     fr: (text) => `Corrige les fautes d'orthographe et de grammaire dans le texte suivant. Réponds uniquement avec le texte corrigé, sans commentaires. Texte : "${text}"`,
     en: (text) => `Correct spelling and grammar mistakes in the following text. Respond only with the corrected text, no comments. Text: "${text}"`,
     es: (text) => `Corrige los errores ortográficos y gramaticales en el siguiente texto. Responde solo con el texto corregido, sin comentarios. Texto: "${text}"`,
-    // ... Ajoutez ici TOUS les autres prompts pour chaque langue
     zh: (text) => `纠正以下文本中的拼写和语法错误。仅回复纠正后的文本，不要评论。文本："${text}"`,
     hi: (text) => `निम्नलिखित पाठ में वर्तनी और व्याकरण की गलतियों को सही करें। केवल सही किया गया पाठ दें, कोई टिप्पणी नहीं। पाठ: "${text}"`,
     ar: (text) => `صحح الأخطاء الإملائية والنحوية في النص التالي. أجب فقط بالنص المصحح، دون تعليقات. النص: "${text}"`,
@@ -18,42 +14,44 @@ const prompts = {
 
 
 exports.handler = async function (event, context) {
-    // On ne traite que les requêtes POST
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
     try {
         const { text, lang } = JSON.parse(event.body);
-        
-        // La clé API est récupérée de manière sécurisée depuis les variables d'environnement de Netlify
-        const API_KEY = process.env.GEMINI_API_KEY;
-        const MODEL_NAME = "gemini-2.5-flash-lite"; 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
+        const API_KEY = process.env.OPENROUTER_API_KEY;
+        const MODEL_NAME = "nvidia/nemotron-3-nano-30b-a3b:free";
+        const API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
         if (!text || !lang || !prompts[lang]) {
             return { statusCode: 400, body: 'Bad Request: missing text or lang' };
         }
 
-        // Appel à l'API Gemini depuis le serveur
         const response = await fetch(API_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Authorization': `Bearer ${API_KEY}`,
+                'HTTP-Referer': 'https://pravka.netlify.app',
+                'X-Title': 'Pravka',
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
-                contents: [{
-                    parts: [{ text: prompts[lang](text) }]
-                }]
+                "model": MODEL_NAME,
+                "messages": [
+                    { "role": "user", "content": prompts[lang](text) }
+                ]
             })
         });
 
         if (!response.ok) {
-            throw new Error(`API error: ${response.statusText}`);
+            const errorDetails = await response.text();
+            throw new Error(`API error: ${response.status} ${response.statusText} - ${errorDetails}`);
         }
 
         const data = await response.json();
-        const correctedText = data.candidates[0].content.parts[0].text;
-        
-        // On renvoie le texte corrigé au client (votre script.js)
+        const correctedText = data.choices[0].message.content;
+
         return {
             statusCode: 200,
             body: JSON.stringify({ correctedText: correctedText.trim() }),
